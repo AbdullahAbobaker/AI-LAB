@@ -154,7 +154,7 @@ def retrieve_answer(query, top_k=3):
 
 # ✅ Test with a Query
 queries = [
-    "Was sind die Alternativen zur Gewebeentnahme aus der Niere?"
+    "Wie wird eine Nierenbiopsie durchgeführt?"
 ]
 for q in queries:
     print(f"\n🔎 Query: {q}")
