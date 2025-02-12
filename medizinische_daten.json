@@ -1,0 +1,95 @@
+{
+    "metadaten": {
+        "titel": "Gewebeentnahme aus der Niere (Nierenbiopsie)",
+        "dokument_id": "IP 7",
+        "verlag": "Thieme Compliance GmbH",
+        "autoren": [
+            "Dr. med. A. Fritz"
+        ],
+        "veröffentlichungsdatum": "03/2024v1",
+        "sprache": "de-DE",
+        "länder_codes": [
+            "AT",
+            "CH",
+            "DE",
+            "IT"
+        ]
+    },
+    "einleitung": "bei Ihnen ist eine Gewebeentnahme aus der Niere geplant. Dieser Aufklärungsbogen dient der Vorbereitung des Aufklärungsgesprächs. Bitte lesen Sie ihn vor dem Gespräch aufmerksam durch und füllen Sie den Fragebogen gewissenhaft aus. Für die bessere Lesbarkeit verwenden wir bei Berufs- oder Personenbezeichnungen die männliche Form (z.B. Arzt), beziehen aber alle Geschlechter mit ein.",
+    "indikation": {
+        "titel": "Warum ist eine Nierenbiopsie nötig?",
+        "inhalt": "Bei Ihnen liegt eine Erkrankung vor, die durch eine Probenentnahme aus einer Niere genauer geklärt werden kann. Um die Art und den Umfang Ihrer Erkrankung festzustellen und eine geeignete Behandlung wählen zu können, empfehlen wir Ihnen eine Nierenbiopsie. Gewebe aus der Niere entnimmt man auch nach einer Nierentransplantation, um eine etwaige Abstoßungsreaktion zu erkennen. Ob die rechte oder linke Niere punktiert wird, ergibt sich aus dem Ul­tra­schall­befund. Der Arzt entscheidet sich für die Niere, welche mit dem geringsten Risiko erreicht werden kann."
+    },
+    "verfahren": "Sie liegen während der Untersuchung meist in der Bauchlage auf einer Liege. Der Arzt bestimmt mit Ul­tra­schall die genaue Lage der Niere und betäubt die ermittelte Einstichstelle. Unter Ultraschallkontrolle schiebt er eine feine Hohlnadel (Punktionskanüle) bis in den gewünschten Bereich der Niere vor (Abb.) und entnimmt Gewebe (Biopsie). Konnte nicht ausreichend Gewebe entnommen werden, wird die Untersuchung wiederholt.",
+    "alternativen": "Kommen alternativ bildgebende Verfahren (z.B. Computer-, Kernspintomografie, Röntgen, Szintigrafie) zur Feststellung der Erkrankung in Betracht, werden wir Sie über die jeweiligen Vor- und Nachteile, insbesondere unterschiedliche Belastungen, Risiken und Erfolgsaussichten im Aufklärungsgespräch informieren.",
+    "risikokatalog": {
+        "titel": "Risiken und mögliche Komplikationen",
+        "einleitung": "Trotz aller Sorgfalt kann es zu – u.U. auch lebensbedrohlichen – Komplikationen kommen, die weitere Behandlungsmaßnahmen/Operationen erfordern. Die Häufigkeitsangaben sind eine allgemeine Einschätzung und sollen helfen, die Risiken untereinander zu gewichten. Sie entsprechen nicht den Definitionen bezüglich Nebenwirkungen in den Beipackzetteln von Medikamenten. Vor- und Begleiterkrankungen sowie individuelle Besonderheiten können die Häufigkeiten von Komplikationen wesentlich beeinflussen.",
+        "risikogruppen": [
+            {
+                "kompakt": "nein",
+                "risiken": [
+                    {
+                        "häufigkeit": "undefiniert",
+                        "beschreibung": "**Blutergüsse** **Infektionen** **Nierenschmerzen**"
+                    },
+                    {
+                        "häufigkeit": "undefiniert",
+                        "beschreibung": "Es kann **vorübergehend Blut im Harn** **Größere Blutungen/Nachblutungen** **Infektion** **Blutvergiftung** **Verlust der betroffenen Niere**"
+                    },
+                    {
+                        "häufigkeit": "sehr_selten",
+                        "beschreibung": "Sehr selten treten **Fisteln der Niere** **der ableitenden Harnwege**"
+                    },
+                    {
+                        "häufigkeit": "selten",
+                        "beschreibung": "Selten kommt es  zu einem vorübergehenden **Temperaturanstieg** **Störung der Darmtätigkeit**"
+                    },
+                    {
+                        "häufigkeit": "extrem_selten",
+                        "beschreibung": "**Verletzungen von Nachbarorganen**"
+                    },
+                    {
+                        "häufigkeit": "undefiniert",
+                        "beschreibung": "Falls die Biopsie zur Tumordiagnostik durchgeführt wird, ist das Risiko der **Verschleppung von Tumorzellen**"
+                    },
+                    {
+                        "häufigkeit": "undefiniert",
+                        "beschreibung": "**Allergie/Unverträglichkeit**"
+                    },
+                    {
+                        "häufigkeit": "undefiniert",
+                        "beschreibung": "**Haut-/Gewebe-/Nervenschäden**"
+                    }
+                ]
+            }
+        ],
+        "schlussbemerkungen": "**Bitte fragen Sie im Aufklärungsgespräch nach allem, was Ihnen wichtig oder noch unklar ist!**",
+        "referenzen": [
+            "Deutsche Gesellschaft für Klinische Chemie und Laboratoriumsmedizin e.V. (DGKL), Deutsche Gesellschaft für Nephrologie e.V. (DGfN), S2k-Leitlinie: Rationelle Labordiagnostik zur Abklärung akuter Nierenschädigungen und progredienter Nierenerkrankungen, AWMF-Leitlinie 2021, Register-Nr. 115/001, Version 1.1, gültig bis 18.04.2026",
+            "Amann et al., Evaluation of a renal biopsy; Pathologe 2011; 32 (Suppl 2): 361–369",
+            "Antunes et al., Clinical complications in renal biopsy using two different needle gauges; Int J Urol 2018",
+            "Kuhlmann et al., Nephrologie, Thieme Verlag, 6. Auflage, 2015",
+            "Gerth et al., Nierenbiopsie: Indikation und Durchführung; Nephrologe 2008, 3: 169–177"
+        ]
+    },
+    "verhaltenshinweise": {
+        "titel": "Verhaltenshinweise",
+        "richtlinien": {
+            "vor_der_behandlung": [
+                "Bringen Sie bitte – falls vorhanden – frühere Röntgenbilder und/oder Ultraschallaufnahmen der Niere sowie **Patientenausweise** **Marcumar**",
+                "Wir werden Sie **informieren** **Zeitpunkt**",
+                "Bitte informieren Sie uns über **alle Medikamente** **Marcumar** **Aspirin** **Plavix** **Pradaxa** **Xarelto** **Eliquis** Heparin"
+            ],
+            "nach_der_behandlung": [
+                "Am Untersuchungstag sollten Sie weitgehend Bettruhe einhalten, mindestens aber 4 Stunden auf dem Sandsack liegen bleiben, um die Einstichstelle zu verschließen. Erst danach dürfen Sie wieder essen. Trinken dürfen und sollten Sie nach der Untersuchung sofort. Die genauen Verhaltensregeln wird Ihnen Ihr Arzt mitteilen. In der Regel ist eine 24-stündige Überwachung nach der Biopsie sinnvoll, sodass Sie für einen Tag und eine Nacht stationär im Krankenhaus verbleiben. Bitten Sie den Arzt bei stärkeren Schmerzen um ein Schmerzmittel.",
+                "Sollte der **Eingriff ambulant** **von einer erwachsenen Person nach Hause** **zu Hause eine Betreuung** **24 Stunden** **nicht aktiv am Straßenverkehr** **keine gefährlichen Tätigkeiten** **keinen Alkohol** **keine wichtigen Entscheidungen**",
+                "**Informieren Sie** **bitte sofort einen Arzt**"
+            ]
+        }
+    },
+    "erfolgsaussichten": {
+        "titel": "Erfolgsaussichten",
+        "inhalt": "Die Nierenbiopsie ermöglicht es in der Regel, Aufschluss über Art und Umfang Ihrer Erkrankung zu erhalten."
+    }
+}

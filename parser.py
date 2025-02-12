@@ -1,167 +1,163 @@
 import xml.etree.ElementTree as ET
 import json
 
-# Load and parse the XML file
-def parse_medical_xml(xml_file):
-    tree = ET.parse(xml_file)
-    root = tree.getroot()
+# ✅ XML-Datei laden und parsen
+def parse_medical_xml(xml_datei):
+    baum = ET.parse(xml_datei)
+    wurzel = baum.getroot()
 
-    parsed_data = {
-        "metadata": {
-            "title": "",
-            "document_id": "",
-            "publisher": "Thieme Compliance GmbH",
-            "authors": [],
-            "publication_date": "",
-            "language": "de-DE",
-            "country_codes": []
+    extrahierte_daten = {
+        "metadaten": {
+            "titel": "",
+            "dokument_id": "",
+            "verlag": "Thieme Compliance GmbH",
+            "autoren": [],
+            "veröffentlichungsdatum": "",
+            "sprache": "de-DE",
+            "länder_codes": []
         },
-        "introduction": "",
-        "indication": "",
-        "procedure": "",
-        "alternatives": "",
+        "einleitung": "",
+        "indikation": "",
+        "verfahren": "",
+        "alternativen": "",
         "risikokatalog": {
-            "title": "Risiken und mögliche Komplikationen",
-            "introduction": "",
-            "risk_groups": [],
-            "closing_remarks": "",
-            "references": []
+            "titel": "Risiken und mögliche Komplikationen",
+            "einleitung": "",
+            "risikogruppen": [],
+            "schlussbemerkungen": "",
+            "referenzen": []
         },
         "verhaltenshinweise": {
-            "title": "Verhaltenshinweise",
-            "guidelines": {
-                "before_procedure": [],
-                "after_procedure": []
+            "titel": "Verhaltenshinweise",
+            "richtlinien": {
+                "vor_der_behandlung": [],
+                "nach_der_behandlung": []
             }
         },
         "erfolgsaussichten": {
-            "title": "Erfolgsaussichten",
-            "content": ""
+            "titel": "Erfolgsaussichten",
+            "inhalt": ""
         }
     }
 
-    # ✅ Extract metadata
-    metadata_section = root.find("metadaten")
-    if metadata_section is not None:
-        parsed_data["metadata"]["document_id"] = metadata_section.findtext("metadaten-allgemein/metadatum-bogencode", "").strip()
-        parsed_data["metadata"]["publication_date"] = metadata_section.findtext("metadaten-impressum/metadatum-red-datum", "").strip()
+    # ✅ Metadaten extrahieren
+    metadaten_bereich = wurzel.find("metadaten")
+    if metadaten_bereich is not None:
+        extrahierte_daten["metadaten"]["dokument_id"] = metadaten_bereich.findtext("metadaten-allgemein/metadatum-bogencode", "").strip()
+        extrahierte_daten["metadaten"]["veröffentlichungsdatum"] = metadaten_bereich.findtext("metadaten-impressum/metadatum-red-datum", "").strip()
 
-        # Extract country codes
-        parsed_data["metadata"]["country_codes"] = [
-            country.get("laender-id") for country in metadata_section.findall("metadaten-allgemein/metadatum-laender-id")
+        # Länder-Codes extrahieren
+        extrahierte_daten["metadaten"]["länder_codes"] = [
+            land.get("laender-id") for land in metadaten_bereich.findall("metadaten-allgemein/metadatum-laender-id")
         ]
 
-        # Extract author information
-        authors = metadata_section.findall("metadaten-impressum/metadatum-autoren/person")
-        parsed_data["metadata"]["authors"] = [
-            f"{author.findtext('akgrad', '').strip()} {author.findtext('vname', '').strip()} {author.findtext('nname', '').strip()}".strip()
-            for author in authors if author.findtext("nname") is not None
+        # Autoreninformationen extrahieren
+        autoren = metadaten_bereich.findall("metadaten-impressum/metadatum-autoren/person")
+        extrahierte_daten["metadaten"]["autoren"] = [
+            f"{autor.findtext('akgrad', '').strip()} {autor.findtext('vname', '').strip()} {autor.findtext('nname', '').strip()}".strip()
+            for autor in autoren if autor.findtext("nname") is not None
         ]
 
-    # ✅ Extract document title
-    kopfdaten = root.find("kopfdaten")
+    # ✅ Dokumenttitel extrahieren
+    kopfdaten = wurzel.find("kopfdaten")
     if kopfdaten is not None:
-        title = kopfdaten.findtext("titel", "").strip()
-        subtitle = kopfdaten.findtext("untertitel", "").strip()
-        parsed_data["metadata"]["title"] = f"{title} {subtitle}" if subtitle else title
+        titel = kopfdaten.findtext("titel", "").strip()
+        untertitel = kopfdaten.findtext("untertitel", "").strip()
+        extrahierte_daten["metadaten"]["titel"] = f"{titel} {untertitel}" if untertitel else titel
 
-  
-    # ✅ Extract introduction
-    parsed_data["introduction"] = root.findtext("infoteil/einleitung/a", "").strip()
+    # ✅ Einleitung extrahieren
+    extrahierte_daten["einleitung"] = wurzel.findtext("infoteil/einleitung/a", "").strip()
 
+    # ✅ Indikation extrahieren
+    indikation_bereich = wurzel.find("infoteil/indikation")
+    if indikation_bereich is not None:
+        titel = indikation_bereich.find("titel")
+        inhalt = indikation_bereich.find("a")
 
-   # ✅ Extract "Indikation"
-    indikation_section = root.find("infoteil/indikation")
-    if indikation_section is not None:
-        title = indikation_section.find("titel")
-        content = indikation_section.find("a")
-
-        parsed_data["indication"] = {
-        "title": title.text.strip() if title is not None else "",
-        "content": content.text.strip() if content is not None else ""
+        extrahierte_daten["indikation"] = {
+            "titel": titel.text.strip() if titel is not None else "",
+            "inhalt": inhalt.text.strip() if inhalt is not None else ""
         }
-        
 
+    # ✅ Verfahren extrahieren
+    extrahierte_daten["verfahren"] = wurzel.findtext("infoteil/massnahme/a", "").strip()
 
-    # ✅ Extract procedure
-    parsed_data["procedure"] = root.findtext("infoteil/massnahme/a", "").strip()
+    # ✅ Alternativen extrahieren
+    extrahierte_daten["alternativen"] = wurzel.findtext("infoteil/alternativen/a", "").strip()
 
-    # ✅ Extract alternatives
-    parsed_data["alternatives"] = root.findtext("infoteil/alternativen/a", "").strip()
+    # ✅ Risiken (Risikokatalog) extrahieren
+    risikokatalog = wurzel.find("infoteil/risikokatalog")
+    if risikokatalog is not None:
+        extrahierte_daten["risikokatalog"]["einleitung"] = risikokatalog.findtext("vorspann/a", "").strip()
 
-    # ✅ Extract risks (Risikokatalog)
-    risk_catalog = root.find("infoteil/risikokatalog")
-    if risk_catalog is not None:
-        parsed_data["risikokatalog"]["introduction"] = risk_catalog.findtext("vorspann/a", "").strip()
-
-        # ✅ Extract "closing_remarks" from <nachspann>
-        nachspann = risk_catalog.find("nachspann/a")
+        # ✅ Schlussbemerkungen aus <nachspann> extrahieren
+        nachspann = risikokatalog.find("nachspann/a")
         if nachspann is not None:
-            parsed_data["risikokatalog"]["closing_remarks"] = extract_formatted_text(nachspann)
+            extrahierte_daten["risikokatalog"]["schlussbemerkungen"] = formatierten_text_extrahieren(nachspann)
 
-        # ✅ Extract literature references from <vorspann>/literatur
-        references = [
-            ref.text.strip() for ref in risk_catalog.findall("vorspann/a/literatur") if ref.text and ref.text.strip()
+        # ✅ Literaturverweise aus <vorspann>/literatur extrahieren
+        referenzen = [
+            ref.text.strip() for ref in risikokatalog.findall("vorspann/a/literatur") if ref.text and ref.text.strip()
         ]
-        parsed_data["risikokatalog"]["references"] = references
+        extrahierte_daten["risikokatalog"]["referenzen"] = referenzen
 
-        # ✅ Extract risk groups
-        for risk_group in risk_catalog.findall("risikogruppe"):
-            group = {
-                "compact": risk_group.get("kompakt", "undefiniert"),
-                "risks": []
+        # ✅ Risikogruppen extrahieren
+        for risikogruppe in risikokatalog.findall("risikogruppe"):
+            gruppe = {
+                "kompakt": risikogruppe.get("kompakt", "undefiniert"),
+                "risiken": []
             }
 
-            for risiko in risk_group.findall("risiko"):
-                severity = risiko.get("haeufigkeit", "undefiniert")
-                description = extract_formatted_text(risiko)
-                group["risks"].append({"severity": severity, "description": description})
+            for risiko in risikogruppe.findall("risiko"):
+                häufigkeit = risiko.get("haeufigkeit", "undefiniert")
+                beschreibung = formatierten_text_extrahieren(risiko)
+                gruppe["risiken"].append({"häufigkeit": häufigkeit, "beschreibung": beschreibung})
 
-            # Handle referenced risks
-            for risiko_ref in risk_group.findall("risiko-ref/risiko"):
-                severity = risiko_ref.get("haeufigkeit", "undefiniert")
-                description = extract_formatted_text(risiko_ref)
-                group["risks"].append({"severity": severity, "description": description})
+            # Referenzierte Risiken verarbeiten
+            for risiko_ref in risikogruppe.findall("risiko-ref/risiko"):
+                häufigkeit = risiko_ref.get("haeufigkeit", "undefiniert")
+                beschreibung = formatierten_text_extrahieren(risiko_ref)
+                gruppe["risiken"].append({"häufigkeit": häufigkeit, "beschreibung": beschreibung})
 
-            parsed_data["risikokatalog"]["risk_groups"].append(group)
+            extrahierte_daten["risikokatalog"]["risikogruppen"].append(gruppe)
 
-    # ✅ Extract behavioral guidelines
-    guidelines = root.find("infoteil/verhaltenshinweise")
-    if guidelines is not None:
-        for group in guidelines.findall("verhaltenshinweisgruppe"):
-            title = group.findtext("titel", "").strip().lower()
-            instructions = [extract_formatted_text(hint) for hint in group.findall("verhaltenshinweis")]
+    # ✅ Verhaltenshinweise extrahieren
+    richtlinien = wurzel.find("infoteil/verhaltenshinweise")
+    if richtlinien is not None:
+        for gruppe in richtlinien.findall("verhaltenshinweisgruppe"):
+            titel = gruppe.findtext("titel", "").strip().lower()
+            anweisungen = [formatierten_text_extrahieren(hinweis) for hinweis in gruppe.findall("verhaltenshinweis")]
 
-            if "vor" in title:
-                parsed_data["verhaltenshinweise"]["guidelines"]["before_procedure"].extend(instructions)
-            elif "nach" in title:
-                parsed_data["verhaltenshinweise"]["guidelines"]["after_procedure"].extend(instructions)
+            if "vor" in titel:
+                extrahierte_daten["verhaltenshinweise"]["richtlinien"]["vor_der_behandlung"].extend(anweisungen)
+            elif "nach" in titel:
+                extrahierte_daten["verhaltenshinweise"]["richtlinien"]["nach_der_behandlung"].extend(anweisungen)
 
-    # ✅ Extract success prospects
-    parsed_data["erfolgsaussichten"]["content"] = root.findtext("infoteil/erfolgsaussichten/a", "").strip()
+    # ✅ Erfolgsaussichten extrahieren
+    extrahierte_daten["erfolgsaussichten"]["inhalt"] = wurzel.findtext("infoteil/erfolgsaussichten/a", "").strip()
 
-    return parsed_data
+    return extrahierte_daten
 
-# ✅ Extract formatted text, handling <b> and <medikament> for bold formatting
-def extract_formatted_text(element):
+# ✅ Formatierten Text extrahieren, einschließlich <b> und <medikament> für fette Schrift
+def formatierten_text_extrahieren(element):
     text = ""
-    for node in element.iter():
-        if node.tag in ["b", "medikament"]:
-            text += f"**{node.text.strip()}** " if node.text else ""
-        elif node.text:
-            text += node.text.strip() + " "
+    for knoten in element.iter():
+        if knoten.tag in ["b", "medikament"]:
+            text += f"**{knoten.text.strip()}** " if knoten.text else ""
+        elif knoten.text:
+            text += knoten.text.strip() + " "
     return text.strip()
 
-# ✅ Save extracted data as JSON
-def save_json(data, output_file):
-    with open(output_file, "w", encoding="utf-8") as file:
-        json.dump(data, file, ensure_ascii=False, indent=4)
+# ✅ Extrahierte Daten als JSON speichern
+def speichere_json(daten, ausgabe_datei):
+    with open(ausgabe_datei, "w", encoding="utf-8") as datei:
+        json.dump(daten, datei, ensure_ascii=False, indent=4)
 
-# ✅ Run the parser
-xml_file = "data/IP07.xml"
-output_json = "medical_data.json"
+# ✅ Parser ausführen
+xml_datei = "data/IP07.xml"
+ausgabe_json = "medizinische_daten.json"
 
-parsed_data = parse_medical_xml(xml_file)
-save_json(parsed_data, output_json)
+extrahierte_daten = parse_medical_xml(xml_datei)
+speichere_json(extrahierte_daten, ausgabe_json)
 
-print(f"✅ Parsing completed! Data saved in {output_json}")
+print(f"✅ Parsing abgeschlossen! Daten gespeichert in {ausgabe_json}")
