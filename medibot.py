@@ -96,10 +96,20 @@ def main():
 
             result = response["result"]
             source_documents = response["source_documents"]
-            result_to_show = result + "\n\n📚 **Source Docs:**\n" + str(source_documents)
+
+            # Format source documents
+            source_docs_preview = "\n\n📚 **Source Docs:**\n"
+            for doc in source_documents:
+                source = doc.metadata.get('source', 'Unknown source')
+                section = doc.metadata.get('section', 'Unknown section')
+                score = doc.metadata.get('score', 0.0)
+                source_docs_preview += f"{source} - {section} (Score: {score:.4f})\n"
+
+            result_to_show = result + source_docs_preview
 
             st.chat_message("assistant").markdown(result_to_show)
             st.session_state.messages.append({"role": "assistant", "content": result_to_show})
+
 
         except Exception as e:
             st.error(f"Error: {str(e)}")
