@@ -39,7 +39,12 @@ ANTWORT:"""
 
 
 def ask_question(query, k=4):
-    embeddings = HuggingFaceEmbeddings(model_name="sentence-transformers/all-MiniLM-L6-v2")
+    # Load the FAISS vector store
+    embeddings = HuggingFaceEmbeddings(
+    model_name="sentence-transformers/all-MiniLM-L6-v2",
+    model_kwargs={"device": "cpu"}
+)
+
     db = FAISS.load_local(DB_DIR, embeddings, allow_dangerous_deserialization=True)
     results = db.similarity_search_with_score(query, k=k)
 
