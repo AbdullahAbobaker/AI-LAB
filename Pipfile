@@ -15,7 +15,9 @@ langchain-community = "==0.2.7"
 langchain-huggingface = "==0.0.3"
 faiss-cpu = "==1.8.0"
 sentence-transformers = "==3.0.1"
-torch = {version = ">=2.0.0", index = "https://download.pytorch.org/whl/cpu"}
+torch = { version = "==2.3.0", index = "pytorch-cpu" }
+requests = "==2.32.3"
+pillow = "==9.5.0"
 
 [dev-packages]
 

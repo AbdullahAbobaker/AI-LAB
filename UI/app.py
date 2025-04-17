@@ -10,7 +10,7 @@ if torch.cuda.is_available():
 
 st.set_page_config(page_title="🧠 Medizinischer Aufklärungs-Bot")
 
-st.title("🧠 Medizinischer Aufklärungs-Bot 1.0")
+st.title("🧠 Medizinischer Aufklärungs-Bot 1.1")
 st.write("Stelle eine medizinische Frage basierend auf den Thieme-Aufklärungsbögen.")
 
 query = st.text_input("❓ Was möchtest du wissen?")
