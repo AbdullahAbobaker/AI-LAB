@@ -598,11 +598,11 @@
         },
         "langsmith": {
             "hashes": [
-                "sha256:4f1707d09f779937e5123c61294c02fcb08f334745a581b266e6af37ad73af5e",
-                "sha256:bd5151e8ac8097cbc20778dade3e012c6f3bbac1b1a87fe78444766ec88d3eb5"
+                "sha256:2e933220318a4e73034657103b3b1a3a6109cc5db3566a7e8e03be8d6d7def7a",
+                "sha256:7166fc23b965ccf839d64945a78e9f1157757add228b086141eb03a60d699a15"
             ],
             "markers": "python_full_version >= '3.8.1' and python_version < '4.0'",
-            "version": "==0.1.148rc1"
+            "version": "==0.1.147"
         },
         "markdown-it-py": {
             "hashes": [
@@ -2088,11 +2088,11 @@
         },
         "tzlocal": {
             "hashes": [
-                "sha256:6f8d7ad7fd00cf8ef761672a8f1cb5cbe3bbc6252ce776052f5b5bab66a5f103",
-                "sha256:aff0a68c345e981c424b501ceb25a3630ac3288ff8b72cf1eca09861f4b28593"
+                "sha256:67d7e7f4ce0a98e9dfde2e02474c60fe846ed032d78b555c554c2e9cba472d84",
+                "sha256:ee32ef8c20803c19a96ed366addd3d4a729ef6309cb5c7359a0cc2eeeb7fa46a"
             ],
             "markers": "python_version >= '3.7'",
-            "version": "==4.4b1"
+            "version": "==4.3.1"
         },
         "urllib3": {
             "hashes": [
