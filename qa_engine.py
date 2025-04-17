@@ -42,7 +42,8 @@ def ask_question(query, k=4):
     # Load the FAISS vector store
     embeddings = HuggingFaceEmbeddings(
     model_name="sentence-transformers/all-MiniLM-L6-v2",
-    model_kwargs={"device": "cpu"}
+    model_kwargs={"device": "cpu"},
+    encode_kwargs={"device": "cpu"}
 )
 
     db = FAISS.load_local(DB_DIR, embeddings, allow_dangerous_deserialization=True)
