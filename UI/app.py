@@ -1,7 +1,7 @@
 import streamlit as st
 import sys
 sys.path.insert(0, '/Users/abdullahabobaker/Documents/AI-LAB')
-from qa_engine import ask_question
+from UI.qa_engine import ask_question
 import os
 from datetime import datetime
 
@@ -162,7 +162,7 @@ with col2:
     with st.expander("🔍 Beispielfragen"):
         example_questions = [
             "Was ist eine Nierenbiopsie?",
-            "Welche Risiken bestehen bei einer Nierentransplantation?",
+            "Bei der Nierenbiopsie welche Risiken und Komplikationen können auftreten? ",
             "Warum ist die Dialysebehandlung notwendig?",
             "Gibt es Alternativen zur renalen Denervierung?"
         ]
