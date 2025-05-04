@@ -163,8 +163,8 @@ with col2:
         example_questions = [
             "Was ist eine Nierenbiopsie?",
             "Welche Risiken bestehen bei einer Nierentransplantation?",
-            "Wie läuft eine Hämodialyse ab?",
-            "Was ist eine renale Denervierung?"
+            "Warum ist die Dialysebehandlung notwendig?",
+            "Gibt es Alternativen zur renalen Denervierung?"
         ]
         for eq in example_questions:
             if st.button(eq, key=f"ex_{eq}"):
