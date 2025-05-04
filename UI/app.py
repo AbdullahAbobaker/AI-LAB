@@ -1,7 +1,7 @@
 import streamlit as st
 import sys
 sys.path.insert(0, '/Users/abdullahabobaker/Documents/AI-LAB')
-from UI.qa_engine import ask_question
+from qa_engine import ask_question
 import os
 from datetime import datetime
 
